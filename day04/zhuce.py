@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 #encoding:utf-8
 
-def dictionary(filename):
+def dictionary(filename):          #字典函数
     d = {}
-    with open(filename) as f:
+    with open(filename) as f:      #一行行读取文件并且读取成为KV结构
         content = f.readlines()
         for user in content:
             name = user.rstrip("\n").split(":")[0]
             d[name] = user.rstrip("\n").split(":")[1]
         return d
 
-def register(filename):
+def register(filename):        #注册函数
     res_dict = dictionary(filename)
     while True:
         name = raw_input("input your name:").rstrip(" ")
@@ -32,7 +32,7 @@ def register(filename):
         f.write("%s:%s\n" % (name,password))
 
 
-def login(filename):
+def login(filename):    #登录函数
     res_dict = dictionary(filename)
     count = 0
     while True:
@@ -52,7 +52,7 @@ def login(filename):
             print "login success"
             break
 
-def user(filename):
+def user(filename):    #用户最终输入的模块
     choice = raw_input("input your choice:login or register:").rstrip(" ")
     if choice == "login":
         login(filename)
